@@ -2,7 +2,32 @@
 
 {% block title %}Product{% endblock %}
 
+{% block menu %}
+    <li><a href="{% url 'poll_update' poll.pk %}">Update</a></li>
+    <li><a href="{% url 'poll_delete' poll.pk %}">Delete</a></li>
+    <li><a href="{% url 'choice_create' poll.pk %}">Add Choice</a></li>
+{% endblock %}
 
 {% block content %}
     <h1>{{ poll.text }}</h1>
+    <h3>Choice:</h3>
+    {%  for choice in poll.pol.all %}
+        <div class="box">
+            <h4>{{ choice.text }}</h4>
+
+        <table width="50%" border="0" cellpadding="5" cellspacing="0">
+         <col width="33%" valign="top">
+            <tr>
+             <td><a style="text-decoration: none;text-transform: uppercase;color:
+        #6a7dff" href="{% url "choice_view" choice.pk %}">more </a></td>
+           <td> <a style="text-decoration: none;text-transform: uppercase;color:
+        #6a7dff" href="{% url "choice_update" choice.pk %}">Update </a></td>
+                <td><a style="text-decoration: none;text-transform: uppercase;color:
+        #6a7dff" href="{% url "del_choice" choice.pk %}">Delete</a></td>
+            </tr>
+        </table>
+
+        </div>
+    {% endfor %}
+
 {% endblock %}

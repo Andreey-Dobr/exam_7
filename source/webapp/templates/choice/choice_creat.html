@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Create choice {% endblock %}
+
+{% block content %}
+    <h1>Create choice</h1>
+    {% url 'choice_view' as action_url %}
+    {% include 'partial/form.html' with  form_method='post' button_text='create'   %}
+
+
+{% endblock %}

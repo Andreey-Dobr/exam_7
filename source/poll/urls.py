@@ -16,14 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from webapp.views import PollListView, PollCreate, PollViews, Poll_Update, Delete_Poll
+from webapp.views import PollListView, PollCreate, PollViews, Poll_Update, Delete_Poll, \
+    Choice_View, Choice_Update_View, Choice_Create, Delete_Choice
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', PollListView.as_view(), name='poll_list'),
-    path('<int:pk>/', PollViews.as_view(), name='poll_view'),
-    path('add/', PollCreate.as_view(), name='poll_create'),
-    path('<int:pk>/edit/', Poll_Update.as_view(), name='poll_update'),
-    path('<int:pk>/del/', Delete_Poll.as_view(), name='poll_delete'),
+    path('poll/<int:pk>/', PollViews.as_view(), name='poll_view'),
+    path('poll/add/', PollCreate.as_view(), name='poll_create'),
+    path('poll/<int:pk>/update/', Poll_Update.as_view(), name='poll_update'),
+    path('poll/<int:pk>/delete/', Delete_Poll.as_view(), name='poll_delete'),
 
+
+    path('choise/<int:pk>', Choice_View.as_view(), name='choice_view'),
+    path('poll/<int:pk>/choise/add', Choice_Create.as_view(), name='choice_create'),
+    path('choice/<int:pk>/update/', Choice_Update_View.as_view(), name='choice_update'),
+    path('choice/<int:pk>/delet_choice/', Delete_Choice.as_view(), name='del_choice'),
 ]

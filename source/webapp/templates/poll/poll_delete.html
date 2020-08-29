@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete{% endblock %}
+
+{% block content %}
+    <h1>Вы уверены, что хотите вопрос: "{{ poll.text }}"?</h1>
+
+    <form action="{% url "poll_delete" poll.pk %}" method="post">
+        {% csrf_token %}
+        <p><input type="submit" value="Да"></p>
+
+        <button type="button"><a href="{% url 'poll_list'  %}" style="text-decoration: none">Нет</a></button>
+    </form>
+    <h3>Содержимое отзыва: </h3>
+    <p>{{ poll.text }}</p>
+{% endblock %}

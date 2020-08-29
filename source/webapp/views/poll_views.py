@@ -1,5 +1,8 @@
-from django.shortcuts import render
-from django.views.generic import ListView
+
+from django.urls import reverse
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+
+from webapp.forms import PollForm
 from webapp.models import Poll
 
 
@@ -9,11 +12,41 @@ class PollListView(ListView):
     context_object_name = 'polls'
 
 
-def index_view(request):
-    polls = Poll.objects.all()
-    context = {
-        'polls': polls
-    }
-    return render(request, 'poll/poll_list.html', context)
+
+class PollViews(DetailView):
+    template_name = 'poll/poll_view.html'
+    model = Poll
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+
+
+class PollCreate(CreateView):
+    template_name = 'poll/poll_create.html'
+    form_class = PollForm
+    model = Poll
+
+    def get_success_url(self):
+        return reverse('poll_view', kwargs={'pk': self.object.pk})
+
+class Poll_Update(UpdateView):
+    model = Poll
+    template_name = 'poll/poll_update.html'
+    form_class = PollForm
+    context_object_name = 'poll'
+
+    def get_success_url(self):
+        return reverse('poll_view', kwargs={'pk': self.object.pk})
+
+class Delete_Poll(DeleteView):
+    template_name = 'poll/poll_delete.html'
+    model = Poll
+    context_key = 'poll'
+
+    def get_success_url(self):
+        return reverse('poll_list')
 
 

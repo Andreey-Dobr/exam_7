@@ -4,6 +4,8 @@
 
 {% block content %}
     <h1 style="text-transform: full-width; color: #5E5694; text-align: center">Poll List</h1>
+    <p><a style="text-decoration: none;text-transform: uppercase;color:
+                #6a7dff" href="{% url 'answer'%}">answer </a>
         {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}
@@ -16,6 +18,8 @@
                 #6a7dff" href="{% url 'poll_update' poll.pk %}">update </a>|
         <p><a style="text-decoration: none;text-transform: uppercase;color:
                 #6a7dff" href="{% url 'poll_delete' poll.pk %}">delete </a>|
+         <p><a style="text-decoration: none;text-transform: uppercase;color:
+                #6a7dff" href="{% url 'answer_test' poll.pk %}">answer </a>
     <hr>
     {% endfor %}
         {% if is_paginated %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Answer List{% endblock %}
+
+{% block content %}
+    <h1 style="text-transform: full-width; color: #5E5694; text-align: center">Answer List</h1>
+
+
+    {% for answer in answers %}
+
+                 Вопрос:{{ answer.choice.poll.text }}
+
+
+            <hr>
+
+    {% endfor %}
+
+
+
+
+{% endblock %}

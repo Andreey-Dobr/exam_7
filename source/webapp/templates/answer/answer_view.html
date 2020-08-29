@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Product{% endblock %}
+
+{% block menu %}
+
+    <li><a href="#">Add Choice</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ answer.choice.poll.text }}</h1>
+    <h3>Choice:</h3>
+    {% for answer in answers %}
+        {{ answer.choice.poll.text }}
+        <hr>
+    {% endfor %}
+
+{% endblock %}

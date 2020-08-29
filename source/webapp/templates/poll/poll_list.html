@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Poll List{% endblock %}
+
+{% block content %}
+    <h1 style="text-transform: full-width; color: #5E5694; text-align: center">Poll List</h1>
+
+    {% for poll in polls %}
+       Вопрос:{{ poll.text }}
+
+    <hr>
+    {% endfor %}
+  </div>
+
+{% endblock %}

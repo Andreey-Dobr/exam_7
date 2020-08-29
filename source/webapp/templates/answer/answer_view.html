@@ -8,10 +8,10 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ answer.choice.poll.text }}</h1>
+    <h1>{{ answer.poll.text }}</h1>
     <h3>Choice:</h3>
     {% for answer in answers %}
-        {{ answer.choice.poll.text }}
+        {{ answer.choice.text }}
         <hr>
     {% endfor %}
 

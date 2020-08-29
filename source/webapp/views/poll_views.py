@@ -10,6 +10,8 @@ class PollListView(ListView):
     model = Poll
     template_name = 'poll/poll_list.html'
     context_object_name = 'polls'
+    ordering = ['-data']
+    paginate_by = 5
 
 
 

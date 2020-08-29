@@ -4,6 +4,9 @@
 
 {% block content %}
     <h1 style="text-transform: full-width; color: #5E5694; text-align: center">Poll List</h1>
+        {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
 
     {% for poll in polls %}
        Вопрос:{{ poll.text }}
@@ -15,6 +18,8 @@
                 #6a7dff" href="{% url 'poll_delete' poll.pk %}">delete </a>|
     <hr>
     {% endfor %}
-  </div>
+        {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
 
 {% endblock %}
